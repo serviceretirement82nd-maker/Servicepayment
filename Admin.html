@@ -1,0 +1,41 @@
+<h2>Admin Dashboard</h2>
+
+<div id="payments"></div>
+
+<script>
+
+fetch("/payments")
+.then(r=>r.json())
+.then(data=>{
+
+let html=""
+
+data.forEach(p=>{
+
+html+=`
+<p>
+Payment ID: ${p.id} <br>
+TXID: ${p.txid} <br>
+Status: ${p.status}
+<button onclick="confirm(${p.id})">Confirm</button>
+</p>
+`
+
+})
+
+payments.innerHTML=html
+
+})
+
+function confirm(id){
+
+fetch("/confirm-payment",{
+method:"POST",
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({payment_id:id})
+})
+.then(()=>location.reload())
+
+}
+
+</script>
