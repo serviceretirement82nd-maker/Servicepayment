@@ -1,0 +1,14 @@
+service-payment-portal
+│
+├── server.js
+├── package.json
+├── database.db
+│
+├── public
+│   ├── login.html
+│   ├── dashboard.html
+│   ├── payment.html
+│   └── admin.html
+│
+└── css
+    └── style.css
