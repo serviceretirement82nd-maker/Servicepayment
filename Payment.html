@@ -1,0 +1,30 @@
+<h2>Bitcoin Payment</h2>
+
+<p>Send BTC to:</p>
+
+<p><b>bc1xxxxxxxxxxxxxxxx</b></p>
+
+<input id="txid" placeholder="Enter Transaction ID">
+
+<button onclick="submitPayment()">Submit</button>
+
+<script>
+
+function submitPayment(){
+
+const user=JSON.parse(localStorage.getItem("user"))
+
+fetch("/submit-payment",{
+method:"POST",
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({
+user_id:user.id,
+txid:txid.value
+})
+})
+
+alert("Payment submitted for verification")
+
+}
+
+</script>
